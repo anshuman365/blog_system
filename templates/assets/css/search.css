@@ -1,0 +1,30 @@
+        .search-container {
+            position: relative;
+            flex-grow: 1;
+            margin: 0 15px;
+        }
+        #search-box {
+            width: 100%;
+            padding: 8px;
+            display: none; /* Initially hidden */
+        }
+        #suggestions {
+            list-style-type: none;
+            position: absolute;
+            background: #000099;
+            width: 100%;
+            border: 1px solid gray;
+            display: none; /* Initially hidden */
+            max-height: 150px;
+            overflow-y: auto;
+            z-index: 1000; /* Ensure suggestions appear above other elements */
+        }
+        #suggestions div {
+            padding: 8px;
+            cursor: pointer;
+            color: white; /* Ensure text is readable */
+        }
+        #suggestions div:hover {
+            background: #ddd;
+            color: navy; /* Change text color on hover */
+        }

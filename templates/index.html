@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Blog | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/variables.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style1.css">
+    <link rel="stylesheet" href="static/css/search.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+        	<div class="menu-icon" onclick="toggleMenu(this)">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+            <a href="/" class="logo"><pre>  NextGen Blog</pre></a>
+            <!-- Add to header -->
+<div class="search-container">
+    <input type="text" id="search-box" placeholder="Search articles...">
+    <button id="search-btn" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
+    <div id="suggestions"></div>
+        </div>
+</div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/articles">Articles</a>
+                <a href="/about">About</a>
+                <a href="/contact"><pre>Contact    </pre></a>
+            </div>
+        <button class="subscribe-btn" onclick="toggleSubscribe()">Subscribe</button>
+    </header>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Where Ideas Meet Innovation</h1>
+        <p>Exploring the future of technology, design, and culture</p>
+    </section>
+    <main class="main-content">
+        <!-- Home page specific content -->
+        	
+    <main class="blog-grid">
+        <!-- Blog cards will be dynamically inserted here -->
+        	
+    </main>
+            	<!-- Add to blog cards 
+<div class="comments-section">
+    <form class="comment-form">
+        <textarea placeholder="Add a comment..."></textarea>
+        <button type="submit">Post</button>
+    </form>
+    <div class="comments-list"></div>
+</div>-->
+    </main>
+	    <footer>
+    	<div class="school-social" id="social-media" style="align:"right"">
+    <ul align="right">
+
+        <li>
+            <a href="#######" class="fab fa-facebook"></a>
+        </li>
+        <li>
+            <a href="https://instagram.com/vidya_sanskar_public_school?igshid=reppxi0rn95d" class="fab fa-instagram"></a>
+        </li>
+        <li>
+            <a href="#######" class="fab fa-twitter"></a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/channel/UCWMQcSzrka9m9HNYst-XVEQ" class="fab fa-youtube"></a>
+        </li>
+        <li>
+            <a href="#######" class="fab fa-whatsapp"></a>
+        </li>
+        <li>
+            <a href="#######" class="fab fa-telegram"></a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="#######" class="fab fa-linkedin"></a>
+        </li>
+        <li>
+            <a href="#######" class="fab fa-snapchat"></a>
+        </li>
+        <li>
+            <a href="#######" class="fab fa-github"></a>
+        </li>
+    </ul>
+</div>
+<hr>
+        <p>&copy; 2024 NextGen Blog. All rights reserved.</p>
+    </footer>
+
+    <button class="theme-switch" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <script src="static/js/blogs.js"></script>
+    <script src="static/js/script.js"></script>
+    <script src="static/js/script1.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchBox = document.getElementById("search-box");
+            const suggestionsContainer = document.getElementById("suggestions");
+            const subscribeBtn = document.querySelector(".subscribe-btn");
+
+            function toggleSearch() {
+                const isVisible = searchBox.style.display === "block";
+                searchBox.style.display = isVisible ? "none" : "block";
+                suggestionsContainer.style.display = "none"; // Hide suggestions when toggling
+                subscribeBtn.style.display = isVisible ? "block" : "none"; // Toggle Subscribe button
+                if (!isVisible) searchBox.focus(); // Focus on search box when shown
+            }
+
+            searchBox.addEventListener("input", function () {
+                const query = searchBox.value.trim();
+                if (query.length > 0) {
+                    fetch(`/search?q=${query}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            suggestionsContainer.innerHTML = "";
+                            if (Object.keys(data).length > 0) {
+                                suggestionsContainer.style.display = "block";
+                                Object.keys(data).forEach(item => {
+                                    const div = document.createElement("div");
+                                    div.textContent = item;
+                                    div.onclick = () => {
+                                        window.location.href = data[item];
+                                        searchBox.value = item;
+                                    };
+                                    suggestionsContainer.appendChild(div);
+                                });
+                            } else {
+                                suggestionsContainer.style.display = "none";
+                            }
+                        });
+                } else {
+                    suggestionsContainer.style.display = "none";
+                }
+            });
+
+            // Hide suggestions when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!event.target.closest(".search-container")) {
+                    suggestionsContainer.style.display = "none";
+                }
+            });
+
+            // Function to toggle menu
+            window.toggleMenu = function() {
+                alert("Menu Clicked! (You can add a real menu here)");
+            };
+function toggleMenu() {
+    let nav = document.querySelector('.nav-links');
+    nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+}
+
+            // Function to toggle subscribe
+            window.toggleSubscribe = function() {
+                alert("Subscribe Clicked! (You can add a real subscribe page here)");
+            };
+
+            window.toggleSearch = toggleSearch; // Expose toggleSearch to global scope
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/variables.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/search.css">
+</head>
+<style>
+/* Variables */
+@import url('variables.css');
+:root {
+    --primary: #2F3C7E;
+    --secondary: #FBEAEB;
+    --accent: #FF5A5F;
+    --dark: #1A1A1A;
+    --ldark: #AAAAAA;
+    --light: #FFFFFF;
+    --transition: all 0.3s ease;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --radius: 12px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--primary), #1A2F6B);
+    color: var(--light);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--light);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Navbar */
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon div {
+    width: 30px;
+    height: 4px;
+    background-color: var(--light);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 10px;
+    }
+}
+
+/* Hero Section */
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary), #4A569D);
+    color: var(--light);
+}
+
+/* Blog Content */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+/* Blog Article */
+.article-container {
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+}
+
+.article-container img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 1rem 0;
+}
+
+.tags {
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+/* Footer */
+.footer {
+    background: var(--ldark);
+    color: var(--light);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* Theme Switch Button */
+.theme-switch {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+/* Buttons */
+.subscribe-btn {
+    background: red;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.subscribe-btn:hover {
+    background: #d44b4e;
+}
+</style>
+<body>
+
+<header class="header">
+    <nav class="nav-container">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="/" class="logo">NextGen Blog</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <button class="subscribe-btn" onclick="toggleSubscribe()">Subscribe</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>{{ article.title }}</h1>
+    <p>Exploring the future of technology, design, and culture</p>
+</section>
+
+<div class="container">
+    <main class="article-container">
+        <h1>{{ article.title }}</h1>
+        <p>By {{ article.author }} | {{ article.date }}</p>
+        <img src="{{ article.image }}" alt="{{ article.title }}">
+        <p>{{ article.content }}</p>
+        <div class="tags">
+            {% for tag in article.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </main>
+</div>
+
+<footer class="footer">
+    <p>© 2025 Blog | All Rights Reserved</p>
+</footer>
+
+<button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+</button>
+
+<script>
+function toggleMenu() {
+    let nav = document.querySelector('.nav-links');
+    nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function toggleSubscribe() {
+    alert("Thank you for subscribing!");
+}
+</script>
+
+</body>
+</html>

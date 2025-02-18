@@ -1,0 +1,82 @@
+{
+    "The Future of Web Development": {
+        "title": "The Future of Web Development",
+        "author": "Rahul Sharma",
+        "date": "15 March 2024",
+        "image": "https://admin.12grids.com/uploads/blogs/original_cover_images/Webp/Top_11_Web_Development_Technologies_You_Must_Know_In_2024_12Grids-compressed.webp",
+        "content": "Web development is evolving rapidly with the rise of new frameworks, AI-powered coding assistants, and Web3 technologies. The future will be dominated by serverless architectures, Progressive Web Apps (PWAs), and AI-generated websites.",
+        "tags": ["Technology", "Web Development"]
+    },
+    "The Future of AI Sector": {
+        "title": "The Future of AI Sector",
+        "author": "Ananya Verma",
+        "date": "10 March 2024",
+        "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*Kou69LOoiWkrjTdz",
+        "content": "Artificial Intelligence is growing at an exponential rate. Future AI will focus on explainability, responsible AI, and neural-symbolic computing, creating smarter and fairer systems.",
+        "tags": ["AI", "Technology"]
+    },
+    "Blockchain Revolution in Finance": {
+        "title": "Blockchain Revolution in Finance",
+        "author": "Vikram Gupta",
+        "date": "5 March 2024",
+        "image": "https://previews.123rf.com/images/funtap/funtap1812/funtap181200333/113273359-rewolucja-blockchain-innowacyjna-technologia-w-nowoczesnym-biznesie.jpg",
+        "content": "Blockchain is transforming the financial industry with decentralized finance (DeFi), smart contracts, and digital identity verification. The future holds greater adoption of CBDCs and secure financial transactions.",
+        "tags": ["Blockchain", "Finance"]
+    },
+    "Cybersecurity Trends in 2024": {
+        "title": "Cybersecurity Trends in 2024",
+        "author": "Neha Kapoor",
+        "date": "2 March 2024",
+        "image": "https://linfordco.com/wp-content/uploads/2021/12/cybersecurity-trends-for-2023-2024.jpg",
+        "content": "Cyber threats are evolving rapidly. AI-driven security, Zero Trust architecture, and Quantum cryptography will be key focus areas in 2024 to combat cyber attacks.",
+        "tags": ["Cybersecurity", "Technology"]
+    },
+    "Impact of IoT on Smart Cities": {
+        "title": "Impact of IoT on Smart Cities",
+        "author": "Rohan Mehta",
+        "date": "28 February 2024",
+        "image": "https://cdn-bbaid.nitrocdn.com/wYFmIWkSNKpdInpiRfVoEqTErZtkFjBo/assets/images/optimized/rev-94c27ed/www.rishabhsoft.com/wp-content/uploads/2023/02/Blog-Banner-IoT-in-Smart-City-700x350.jpg",
+        "content": "IoT is revolutionizing smart city infrastructures, enhancing traffic management, energy efficiency, and public safety through real-time data and automation.",
+        "tags": ["IoT", "Smart Cities"]
+    },
+    "The Rise of Quantum Computing": {
+        "title": "The Rise of Quantum Computing",
+        "author": "Priya Singh",
+        "date": "20 February 2024",
+        "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*KYDGLCDYVJRQfVOzXJMecA.png",
+        "content": "Quantum computing is set to disrupt cryptography, material science, and AI. As we move beyond NISQ (Noisy Intermediate-Scale Quantum) devices, quantum supremacy is closer than ever.",
+        "tags": ["Quantum Computing", "Technology"]
+    },
+    "Ethical AI: Challenges and Solutions": {
+        "title": "Ethical AI: Challenges and Solutions",
+        "author": "Amit Sinha",
+        "date": "15 February 2024",
+        "image": "https://www.zedroit.com/wp-content/uploads/2023/09/ethical-ai-768x384.jpg",
+        "content": "Ensuring fairness, transparency, and accountability in AI is crucial. Techniques like federated learning and bias detection are helping make AI more ethical and unbiased.",
+        "tags": ["AI Ethics", "Technology"]
+    },
+    "E-Waste Management: A Global Challenge": {
+        "title": "E-Waste Management: A Global Challenge",
+        "author": "Suresh Nair",
+        "date": "10 February 2024",
+        "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*QMpiD0UVAg6NpG5r.jpg",
+        "content": "Electronic waste is becoming a major issue. Sustainable recycling practices and eco-friendly material usage can mitigate the negative environmental impact.",
+        "tags": ["Environment", "E-Waste"]
+    },
+    "Drone Technology in Surveillance": {
+        "title": "Drone Technology in Surveillance",
+        "author": "Sonia Malhotra",
+        "date": "5 February 2024",
+        "image": "https://www.zenadrone.com/wp-content/uploads/2022/10/ZenaDrone-as-commercial-drone-700x366.jpg",
+        "content": "Drones are playing a key role in security, disaster response, and agriculture. AI-powered drones are increasing efficiency and reducing risks in various sectors.",
+        "tags": ["Drones", "Surveillance"]
+    },
+    "The Role of AI in Healthcare": {
+        "title": "The Role of AI in Healthcare",
+        "author": "Dr. Rajesh Kumar",
+        "date": "1 February 2024",
+        "image": "https://imageio.forbes.com/blogs-images/bernardmarr/files/2018/07/AdobeStock_157266517-1200x640.jpeg?height=379&width=711&fit=bounds",
+        "content": "AI is transforming healthcare with early disease detection, personalized treatment, and robotic surgeries. The future of medicine will rely on AI-driven diagnostics.",
+        "tags": ["AI", "Healthcare"]
+    }
+}
