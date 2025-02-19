@@ -79,6 +79,10 @@ def get_article(title):
     return jsonify({"error": "Article not found"}), 404
 
 
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('.', 'ads.txt', mimetype='text/plain')
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
