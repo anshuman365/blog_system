@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ article.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="static/css/variables.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/search.css">
+
 </head>
 <style>
 /* Variables */
@@ -210,6 +208,14 @@ body {
 .subscribe-btn:hover {
     background: #d44b4e;
 }
+.article-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
 </style>
 <body>
 
@@ -241,7 +247,7 @@ body {
         <h1>{{ article.title }}</h1>
         <p>By {{ article.author }} | {{ article.date }}</p>
         <img src="{{ article.image }}" alt="{{ article.title }}">
-        <p>{{ article.content }}</p>
+        <p>{{ article.content | safe }}</p>
         <div class="tags">
             {% for tag in article.tags %}
                 <span class="tag">{{ tag }}</span>
