@@ -49,28 +49,43 @@
     },
     "Ethical AI: Challenges and Solutions": {
         "title": "Ethical AI: Challenges and Solutions",
+        "author":"Anshuman Singh ",
+        "date":"10 January 2024",
         "image": "https://www.zedroit.com/wp-content/uploads/2023/09/ethical-ai-768x384.jpg",
         "content": "As artificial intelligence advances, ethical concerns are becoming more prominent. AI bias, privacy risks, and transparency issues are among the major challenges. Many AI systems unintentionally reinforce societal biases, leading to unfair outcomes in areas such as hiring and lending. Additionally, concerns over mass surveillance and data privacy are growing with the rise of AI-powered analytics. Governments and organizations are working on AI regulations to ensure responsible development. Solutions like explainable AI, bias mitigation techniques, and ethical AI frameworks are being implemented to create a fair and accountable AI-driven future."
+        "tags": ["AI", "Ethics"]
     },
     "E-Waste Management: A Global Challenge": {
         "title": "E-Waste Management: A Global Challenge",
+        "author": "Anshuman Singh",
+        "date": "March 22, 2024",
         "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*QMpiD0UVAg6NpG5r.jpg",
         "content": "Electronic waste is rapidly increasing due to our growing reliance on technology. Millions of tons of e-waste end up in landfills, posing environmental and health hazards. Many components contain hazardous materials like lead and mercury, which can leach into soil and water. Recycling programs and circular economy initiatives are being introduced to tackle this issue. Companies are also designing eco-friendly electronics with modular and recyclable components. Governments worldwide are enforcing stricter e-waste regulations, encouraging responsible disposal and refurbishment. Public awareness and sustainable tech manufacturing are key to reducing the global e-waste crisis."
+        "tags": ["Environment", "E-Waste"]
     },
     "Drone Technology in Surveillance": {
         "title": "Drone Technology in Surveillance",
+        "author": "Anshuman Singh",
+        "date": "March 23, 2024",
         "image": "https://www.zenadrone.com/wp-content/uploads/2022/10/ZenaDrone-as-commercial-drone-700x366.jpg",
         "content": "Drones are revolutionizing surveillance with their ability to monitor vast areas efficiently. Law enforcement agencies use drones for crowd monitoring and search-and-rescue missions. In industrial settings, drones inspect infrastructure such as power lines, oil rigs, and bridges, reducing risks for human workers. AI-powered drones can analyze real-time data, enhancing security operations. However, privacy concerns arise as drone surveillance becomes more prevalent. Regulations are being developed to balance security with personal privacy rights. With advancements in AI and automation, drones will continue to play a crucial role in surveillance, emergency response, and industrial monitoring."
+        "tags": ["Technology", "Drones"]
     },
     "The Role of AI in Healthcare": {
         "title": "The Role of AI in Healthcare",
+        "author": "Anshuman Singh",
+        "date": "March 24, 2024",
         "image": "https://imageio.forbes.com/blogs-images/bernardmarr/files/2018/07/AdobeStock_157266517-1200x640.jpeg?height=379&width=711&fit=bounds",
         "content": "AI is transforming healthcare by improving diagnostics, treatment plans, and patient care. Machine learning models analyze vast amounts of medical data to detect diseases like cancer at early stages. AI-powered chatbots and virtual assistants help patients schedule appointments and receive medical advice. Robotic surgeries are becoming more precise with AI-assisted techniques. Personalized medicine, driven by AI, tailors treatments based on individual genetic profiles. However, challenges such as data privacy, ethical AI use, and the need for regulatory approval remain. As AI evolves, it will continue to enhance healthcare accessibility and efficiency."
+        "tags": ["AI", "Healthcare"]
     },
     "The Future of Space Exploration": {
         "title": "The Future of Space Exploration",
+        "author": "Anshuman Singh"
+        "date": "March 25, 2024",
         "image": "https://scx1.b-cdn.net/csz/news/800w/2018/8-researcherdi.jpg?f=webp",
         "content": "Humanity is on the verge of a new era in space exploration. NASA, SpaceX, and other agencies are working on missions to Mars, with the goal of establishing human settlements. The Artemis program aims to return humans to the Moon, paving the way for future deep-space exploration. Private space travel is becoming more accessible, thanks to advancements in reusable rockets. Space mining is being explored as a potential industry, with asteroids containing valuable resources. AI and robotics are playing a crucial role in space missions, enabling autonomous operations in extreme environments. The coming decades will redefine our presence beyond Earth."
+        "tags": ["Space", "Technology"]
     },
     "5G and Beyond: The Future of Connectivity": {
         "title": "5G and Beyond: The Future of Connectivity",
