@@ -88,7 +88,7 @@ def ads_txt():
         return str(e), 500 
 
 @app.route('/contact.txt')
-def ads_txt():
+def contact_txt():
     try:
         return send_file('contact.txt', mimetype='text/plain')
     except Exception as e:
