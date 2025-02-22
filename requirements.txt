@@ -1,2 +1,5 @@
-Flask
-gunicorn
+flask>=2.0.0
+flask-sqlalchemy>=3.0.0
+razorpay>=1.3.0
+werkzeug>=2.0.0
+gunicorn>=20.1.0 
