@@ -1,143 +1,283 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGen Blog | Home</title>
+    <title>{{ article.title }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="static/css/variables.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/style1.css">
-    <link rel="stylesheet" href="static/css/search.css">
+
 </head>
-<body>
-    <header class="header">
-        <nav class="nav-container">
-        	<div class="menu-icon" onclick="toggleMenu(this)">
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
-            <a href="index.html" class="logo"><pre>  NextGen Blog</pre></a>
-            <!-- Add to header -->
-<div class="search-container">
-    <input type="text" id="search-box" placeholder="Search articles...">
-    <button id="search-btn" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
-    <div id="suggestions"></div>
-        </div>
-</div>
-<div class="nav-links">
-    <a href="/"><i class="fas fa-home"></i> Home</a>
-    <a href="/articles"><i class="fas fa-newspaper"></i> Articles</a>
-    <a href="/about"><i class="fas fa-info-circle"></i> About</a>
-    <a href="/contact"><pre><i class="fas fa-envelope"></i> Contact </pre></a>
-</div>
-        <button class="subscribe-btn" onclick="window.location.href='/register'">
-    <i class="fas fa-bell"></i> Subscribe
-</button>
-    </header>
+<style>
+/* Variables */
+@import url('variables.css');
+:root {
+    --primary: #2F3C7E;
+    --secondary: #FBEAEB;
+    --accent: #FF5A5F;
+    --dark: #1A1A1A;
+    --ldark: #AAAAAA;
+    --light: #FFFFFF;
+    --transition: all 0.3s ease;
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --radius: 12px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, var(--primary), #1A2F6B);
+    color: var(--light);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--light);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Navbar */
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon div {
+    width: 30px;
+    height: 4px;
+    background-color: var(--light);
+    margin: 5px 0;
+    transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
     
-<!-- Similar structure to index.html with different main content -->
-<main class="main-content">
-    <h1>Latest Articles</h1>
-    <div class="blog-grid">
-        <!-- Dynamic content from JS -->
-        	<!-- Add to blog cards -->
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 10px;
+    }
+}
 
-    </div>
-</main>
+/* Hero Section */
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary), #4A569D);
+    color: var(--light);
+}
 
-	    <footer>
-    	<div class="school-social" id="social-media">
-    <ul align="left">
-        <li>
-            <a href="#######" class="fab fa-facebook"></a>
-        </li>
-        <li>
-            <a href="https://instagram.com/vidya_sanskar_public_school?igshid=reppxi0rn95d" class="fab fa-instagram"></a>
-        </li>
-        <li>
-            <a href="#######" class="fab fa-twitter"></a>
-        </li>
-        <li>
-            <a href="https://www.youtube.com/channel/UCWMQcSzrka9m9HNYst-XVEQ" class="fab fa-youtube"></a>
-        </li>
-        <li>
-            <a href="#######" class="fab fa-whatsapp"></a>
-        </li>
-    </ul>
+/* Blog Content */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+/* Blog Article */
+.article-container {
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+}
+
+.article-container img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 1rem 0;
+}
+
+.tags {
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+/* Footer */
+.footer {
+    background: var(--ldark);
+    color: var(--light);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* Theme Switch Button */
+.theme-switch {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+/* Buttons */
+.subscribe-btn {
+    background: red;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.subscribe-btn:hover {
+    background: #d44b4e;
+}
+.article-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+</style>
+<body>
+
+<header class="header">
+    <nav class="nav-container">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="/" class="logo">NextGen Blog</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/articles">Articles</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+        <button class="subscribe-btn" onclick="toggleSubscribe()">Subscribe</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>{{ article.title }}</h1>
+    <p>Exploring the future of technology, design, and culture</p>
+</section>
+
+<div class="container">
+    <main class="article-container">
+        <h1>{{ article.title }}</h1>
+        <p>By {{ article.author }} | {{ article.date }}</p>
+        <img src="{{ article.image }}" alt="{{ article.title }}">
+        <p>{{ article.content | safe }}</p>
+        <div class="tags">
+            {% for tag in article.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </main>
 </div>
 
-        <p>&copy; 2024 NextGen Blog. All rights reserved.</p>
-    </footer>
+<footer class="footer">
+    <p>© 2025 Blog | All Rights Reserved</p>
+</footer>
 
-    <button class="theme-switch" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-    </button>
- 
-    <script src="static/js/blogs.js"></script>
-    <script src="static/js/script.js"></script>
-    <script src="static/js/script1.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchBox = document.getElementById("search-box");
-            const suggestionsContainer = document.getElementById("suggestions");
-            const subscribeBtn = document.querySelector(".subscribe-btn");
+<button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+</button>
 
-            function toggleSearch() {
-                const isVisible = searchBox.style.display === "block";
-                searchBox.style.display = isVisible ? "none" : "block";
-                suggestionsContainer.style.display = "none"; // Hide suggestions when toggling
-                subscribeBtn.style.display = isVisible ? "block" : "none"; // Toggle Subscribe button
-                if (!isVisible) searchBox.focus(); // Focus on search box when shown
-            }
+<script>
+function toggleMenu() {
+    let nav = document.querySelector('.nav-links');
+    nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+}
 
-            searchBox.addEventListener("input", function () {
-                const query = searchBox.value.trim();
-                if (query.length > 0) {
-                    fetch(`/search?q=${query}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            suggestionsContainer.innerHTML = "";
-                            if (Object.keys(data).length > 0) {
-                                suggestionsContainer.style.display = "block";
-                                Object.keys(data).forEach(item => {
-                                    const div = document.createElement("div");
-                                    div.textContent = item;
-                                    div.onclick = () => {
-                                        window.location.href = data[item];
-                                        searchBox.value = item;
-                                    };
-                                    suggestionsContainer.appendChild(div);
-                                });
-                            } else {
-                                suggestionsContainer.style.display = "none";
-                            }
-                        });
-                } else {
-                    suggestionsContainer.style.display = "none";
-                }
-            });
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
 
-            // Hide suggestions when clicking outside
-            document.addEventListener("click", function (event) {
-                if (!event.target.closest(".search-container")) {
-                    suggestionsContainer.style.display = "none";
-                }
-            });
-
-            // Function to toggle menu
-            window.toggleMenu = function() {
-                alert("Menu Clicked! (You can add a real menu here)");
-            };
-
-            // Function to toggle subscribe
-            window.toggleSubscribe = function() {
-                alert("Subscribe Clicked! (You can add a real subscribe page here)");
-            };
-
-            window.toggleSearch = toggleSearch; // Expose toggleSearch to global scope
-        });
-    </script>
+function toggleSubscribe() {
+    alert("Thank you for subscribing!");
+}
+</script>
 </body>
 </html>
