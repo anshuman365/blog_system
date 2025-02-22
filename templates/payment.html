@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora Industries | Secure Payment</title><!-- Razorpay & jQuery -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Payment Card */
+        .payment-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .payment-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Branding */
+        .logo {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        /* Display Approximate USD Value */
+        #converted-amount {
+            font-size: 14px;
+            color: #ffeb3b;
+            margin-top: 5px;
+        }
+
+        /* Pay Button */
+        .pay-button {
+            background: #ff5722;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pay-button:hover {
+            background: #e64a19;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #ff5252;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body><div class="payment-container">
+    <h2>Make a Secure Payment</h2>
+    <form id="payment-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Bank-Linked Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your bank-registered email" required>
+
+        <label for="amount">Enter Amount:</label>
+        <input type="number" id="amount" name="amount" placeholder="Amount" min="1" required>
+        
+        <label for="currency">Select Currency:</label>
+        <select id="currency" name="currency" required>
+            <option value="INR">INR (Indian Rupee)</option>
+            <option value="USD">USD (US Dollar)</option>
+            <option value="EUR">EUR (Euro)</option>
+        </select>
+
+        <button type="submit" class="pay-button">Pay Now</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Live Currency Conversion (Approximation)
+        $('#amount').on('input', function() {
+            let amount = parseFloat($(this).val());
+            if (!isNaN(amount) && amount > 0) {
+                let usdValue = (amount / 83).toFixed(2); // Example: 1 USD = 83 INR (adjust accordingly)
+                $('#converted-amount').text(`≈ ${usdValue} USD (Approx)`);
+            } else {
+                $('#converted-amount').text('');
+            }
+        });
+
+        $('#payment-form').on('submit', function(e) {
+            e.preventDefault();
+
+            var name = $('#name').val().trim();
+            var email = $('#email').val().trim();
+            var amount = $('#amount').val();
+            var currency = $('#currency').val();
+
+            // Validate inputs
+            if (!name || !email) {
+                alert("Please enter your name and email.");
+                return;
+            }
+
+            if (amount <= 0) {
+                $('#amount-error').show();
+                return;
+            } else {
+                $('#amount-error').hide();
+            }
+
+            // Create payment order via AJAX
+            $.ajax({
+                url: '/payment',
+                method: 'POST',
+                data: {
+                    amount: amount * 100, // Convert to smallest currency unit
+                    currency: currency,
+                    name: name,
+                    email: email
+                },
+                success: function(response) {
+                    var options = {
+                        "key": "your_key_id",  // Razorpay Key
+                        "amount": amount * 100,
+                        "currency": currency,
+                        "order_id": response.order_id,
+                        "name": "Nexora Industries",
+                        "description": "Secure Payment",
+                        "image": "https://previews.123rf.com/images/pixbold/pixbold2104/pixbold210401023/167585256-ni-logo-design-for-business-and-company-identity-creative-ni-letter-with-luxury-concept.jpg",
+                        "handler": function(response) {
+                            $.post("/payment/success", {
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature
+                            }, function(data) {
+                                window.location.href = "/dashboard"; // Redirect after success
+                            });
+                        },
+                        "prefill": {
+                            "name": name,
+                            "email": email
+                        },
+                        "theme": {
+                            "color": "#ff5722"
+                        }
+                    };
+
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                },
+                error: function(error) {
+                    alert("Payment failed. Please try again.");
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
