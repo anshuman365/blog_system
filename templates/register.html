@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Blog | Register</title>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="static/css/variables.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style1.css">
+    <link rel="stylesheet" href="static/css/search.css">
+
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2C3E50;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        .subscribe-btn {
+            background-color: #f39c12;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-box {
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #search-btn {
+            background: #f39c12;
+            border: none;
+            padding: 7px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #search-btn:hover {
+            background: #e67e22;
+        }
+
+        #suggestions {
+            position: absolute;
+            background: white;
+            width: 100%;
+            border: 1px solid #ccc;
+            display: none;
+        }
+
+        /* Registration Form */
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #f39c12;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #e67e22;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+
+        p a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Menu */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #2C3E50;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 10px;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <a href="/" class="logo">NextGen Blog</a>
+            
+            <div class="search-container">
+                <input type="text" id="search-box" placeholder="Search articles...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+                <div id="suggestions"></div>
+            </div>
+
+            <div class="nav-links">
+                <a href="/"><i class="fas fa-home"></i> Home</a>
+                <a href="/articles"><i class="fas fa-newspaper"></i> Articles</a>
+                <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/contact"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+
+            <button class="subscribe-btn" onclick="window.location.href='/register'">
+                <i class="fas fa-bell"></i> Subscribe
+            </button>
+        </nav>
+    </header>
+
+    <h2>Register</h2>
+    
+    <div class="container">
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === "block") ? "none" : "block";
+        }
+
+        document.getElementById("search-box").addEventListener("input", function() {
+            var suggestions = document.getElementById("suggestions");
+            if (this.value.length > 2) {
+                suggestions.style.display = "block";
+                suggestions.innerHTML = "<p>Loading suggestions...</p>";
+                setTimeout(() => {
+                    suggestions.innerHTML = "<p>Example Article 1</p><p>Example Article 2</p>";
+                }, 500);
+            } else {
+                suggestions.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
