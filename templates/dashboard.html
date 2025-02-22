@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora | Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .inactive {
+            background-color: #FF5722;
+            color: white;
+        }
+
+        .button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .button:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <h2>Welcome, {{ user.name }}!</h2>
+        <p>Your subscription status:</p>
+        <span class="status {{ 'active' if user.is_subscribed else 'inactive' }}">
+            {{ "Active" if user.is_subscribed else "Inactive" }}
+        </span>
+
+        <a href="/" class="button">Go to Home</a>
+        <a href="/logout" class="button" style="background: #F44336;">Logout</a>
+    </div>
+
+</body>
+</html>
